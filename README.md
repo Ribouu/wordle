@@ -17,4 +17,4 @@ Created by Ribou ([Twitter](ribou.fr/twitter), [Twitch](ribou.fr/twitch))
 
 I got the data from [David Louapre](github.com/scienceetonnante) in his [WordleSutom project](github.com/scienceetonnante/WordleSutom), as I couldn't find any other list of words on the internet.
 
-Game obviously inspired from [Wordle](https://www.nytimes.com/games/wordle/index.html), and the French games [sutom](https://sutom.nocle.fr/#) and [Wordle.louan](https://wordle.louan.me/).
+Game obviously inspired from [Wordle](https://www.nytimes.com/games/wordle/index.html), and the French games [Sutom](https://sutom.nocle.fr/#) and [Le Mot](https://wordle.louan.me/).
