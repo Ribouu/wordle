@@ -69,16 +69,23 @@ def welcome():
     while nb_letters!='quit' or nb_letters!='quitter':
         nb_letters = str(input())
         # The method isdigit() returns whether or not the input is a number
-        if nb_letters.isdigit():
-            nb_letters = int(nb_letters)
-            # The length of the word cannot be less than 4 or more than 12
-            if nb_letters>3 and nb_letters<13:
-                print(f"Vous avez choisi un mot de {nb_letters} lettres.\n")
-                break
-            else:
-                print("Entrez un nombre entre 4 et 12 (compris).\n")
+        if nb_letters.lower()=='regles' or nb_letters.lower()=='rules':
+            print("\nVous avez six essais pour deviner le mot mystère.\
+Les lettres en vert sont bien placées, les lettres en jaune \
+sont mal placées (mais dans le mot), et les lettres qui \
+restent grises ne sont pas dans le mot.\nChoisissez le nombre de lettres du \
+mot mystère.")
         else:
-            print("Saisie invalide. Veuillez réessayer.\n")
+            if nb_letters.isdigit():
+                nb_letters = int(nb_letters)
+                # The length of the word cannot be less than 4 or more than 12
+                if nb_letters>3 and nb_letters<13:
+                    print(f"Vous avez choisi un mot de {nb_letters} lettres.\n")
+                    break
+                else:
+                    print("Entrez un nombre entre 4 et 12 (compris).\n")
+            else:
+                print("Saisie invalide. Veuillez réessayer.\n")
     words_list = make_list(nb_letters)
     secret_word = get_random_word(words_list)
     return words_list, secret_word
