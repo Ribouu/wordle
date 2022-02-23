@@ -1,5 +1,6 @@
 # Import choice to select a secret word from a list of words
 from random import choice
+import sys
 
 # Create a class of colors to color the letters if needed
 class colors:
@@ -12,10 +13,8 @@ class colors:
 
 def make_list(nb_letters):
     """Makes the list of words.
-
     Args:
         nb_letters (int): number of letters in the words of the list
-
     Returns:
         list: the list of words
     """
@@ -29,10 +28,8 @@ def make_list(nb_letters):
 
 def make_bigger_list(nb_letters):
     """Make a bigger list of words from several other lists.
-
     Args:
         nb_letters (int): the maximum number of letters in the words
-
     Returns:
         list: the list of words
     """
@@ -47,10 +44,8 @@ def make_bigger_list(nb_letters):
 
 def get_random_word(words_list):
     """Randomly choose a word from a list of words.
-
     Args:
         words_list (list): the list of words
-
     Returns:
         str: a random word from the list
     """
@@ -63,7 +58,6 @@ def get_random_word(words_list):
 def welcome():
     """Function for printing the welcome text, make the list and select a secret
     word from it depending of how many letters the user chooses.
-
     Returns:
         list: the list of words
         str: the secret word
@@ -91,11 +85,9 @@ def welcome():
 
 def valid_length_word(word, words_list):
     """Function to test the validity of the length of the input word.
-
     Args:
         word (str): input word
         words_list (list): list of words whose size must be the same as the word entered
-
     Returns:
         bool: whether or not the length of the word is valid
     """
@@ -106,11 +98,9 @@ def valid_length_word(word, words_list):
 
 def valid_dictionary_word(word, words_list):
     """Function to check if the word is in the dictionary.
-
     Args:
         word (str): word to test
         words_list (list): the "dictionary"
-
     Returns:
         bool: wether or not the word is in the dictionary
     """
@@ -119,21 +109,25 @@ def valid_dictionary_word(word, words_list):
     else:
         return False
 
-def user_input(words_list):
+def user_input(words_list, word_to_guess):
     """Function to do each input from the user.
-
     Args:
         words_list (list): the list of words
-
     Returns:
         str: the input word, if it's correct
     """
     word = ""
     # Allows the user to quit whenever they want by entering 'quit' or 'quitter'
-    while word!='quit' or word!='quitter':
+    while 1:
         word = str(input().lower())
+        if word=='quit' or word=='quitter':
+            return word
+        error = False
         # Removes the user input for more visibility
-        print ("\033[A\033[A")
+        if error:
+            sys.stdout.write(u"\u001b[2F\u001b[2K\u001b[2E")
+        else:
+            sys.stdout.write(u"\u001b[1F\u001b[2K\u001b[1F\u001b[2K")
         # Checks the validity of its length
         if valid_length_word(word,words_list):
             # Checks the if the word is in the dictionary
@@ -141,21 +135,19 @@ def user_input(words_list):
                 # So, if the word passes these tests, returns it
                 return word
             else:
-            # Removes the user input for more visibility
-                print ("\033[A\033[A")
-                print("\nVotre mot n'est pas dans le dictionnaire.")
+                print("Votre mot n'est pas dans le dictionnaire.")
+                print(word_to_guess)
+                error = True
         else:
-            # Removes the user input for more visibility
-            print ("\033[A\033[A")
-            print("\nVotre mot n'est pas de la bonne longueur.")
+            print("Votre mot n'est pas de la bonne longueur.")
+            print(word_to_guess)
+            error = True
 
 def colored(letter, color):
     """Function to get the letter colored as we want.
-
     Args:
         letter (str): the letter we want to color
         color (str): the color we want for the letter
-
     Returns:
         str: the colored letter
     """
@@ -167,10 +159,8 @@ def colored(letter, color):
 
 def letters_dict(word):
     """Function to put in a dictionary how many times a letter appears in the word.
-
     Args:
         word (str): the word we want to class
-
     Returns:
         dict: the dictionary that contains how many times each letter appears
         in the word
@@ -189,12 +179,10 @@ def display_word(word, secret_word, word_to_guess):
     """Function to edit the word to display and the word to guess (word to display
     is the test word with its colored letter and the word to guess is the word
     with spaces in it, for each missing letter).
-
     Args:
         word (str): the input word
         secret_word (str): the secret word that the user have to find
         word_to_guess (str): the word with spaces for each missing letter
-
     Returns:
         str: the word to guess, to update it at each try
     """
@@ -246,9 +234,18 @@ def run():
     word_to_guess = secret_word[0]+"_"*(len(secret_word)-1)
     print(word_to_guess)
     word_found = False
+    counter = 0
     while not word_found:
         # Gets the word tests with user_input()
-        word_test = user_input(words_list)
+        word_test= user_input(words_list, word_to_guess)
+        counter += 1
+        if word_test=='quit' or word_test=='quitter':
+            print(f"Le mot secret était {secret_word}. Merci d'avoir joué !")
+            break
+        if counter>5:
+            print(f"Vous avez fait 6 essais infructueux, le mot secret \
+était {secret_word}. Merci d'avoir joué !")
+            break
         # Gets word_to_display and word_to_guess with display_word()
         word_to_display, word_to_guess = display_word(word_test,
                                                       secret_word,
@@ -262,7 +259,8 @@ def run():
         else:
             # Otherwise, we print word_to_guess
             print(word_to_guess)
-    print(f"Félicitations ! Le mot était bien {secret_word} !")
+    else:
+        print(f"Félicitations ! Le mot était bien {secret_word} !")
 
 
 run()
