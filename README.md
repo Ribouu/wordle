@@ -1,7 +1,7 @@
 # wordle
 Just a little project to see if I can apply what I learn everyday in class.
 
-This is the wordle game (motus in french). Feel free to use the code.
+This is the wordle game (motus in french), in terminal. I plan to try to create the game with pygame soon. Feel free to use the code.
 
 ## Setup and Run
 
