@@ -2,6 +2,7 @@
 from random import choice
 import sys
 
+
 # Create a class of colors to color the letters if needed
 class colors:
     GREEN = '\033[92m'
