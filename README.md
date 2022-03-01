@@ -7,10 +7,28 @@ This is the wordle game (motus in french), in terminal. I plan to try to create 
 
 Requires **Python 3.7+**. You can download the latest version of Python [here](https://www.python.org/downloads/).
 
+You'll need to install [ansicon](https://github.com/adoxa/ansicon).
 
-There's no necessary package to install, I only import random and sys in the code.
- 
-However, in windows cmd, the console does not interpret the ANSI codes for the colors or the lines like "sys.stdout.write(u"\u001b[2F\u001b[2K")". So it's preferable to run the program in a IDE, like [Visual Studio Code](https://code.visualstudio.com/).
+    pip install ansicon
+    
+This package provides ANSI escape sequences, to display colors and to correctly delete lines in terminal.
+
+To run it in a terminal :
+
+    python main.py
+
+
+If you don't have python or have troubles to install it but you want to try it anyway, I made a executable. You'll find it at build/wordle : wordle.exe.
+To access it in terminal :
+
+**Linux**
+
+    build/wordle/wordle.exe
+    
+**Windows**
+
+    build\wordle\wordle.exe
+
 
 ## Credits
 Created by Ribou ([Twitter](ribou.fr/twitter), [Twitch](ribou.fr/twitch))
