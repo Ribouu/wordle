@@ -65,7 +65,7 @@ def welcome():
     """
     print("\nBienvenue dans ma version de Wordle !\n")
     print("Vous avez 6 essais pour trouver le mot mystère.\n")
-    print(("Choississez la taille du mot mystère (entre 4 et 12). Entrez quit pour quitter.\n")
+    print("Choississez la taille du mot mystère (entre 4 et 12). Entrez quit pour quitter.\n")
     nb_letters = ""
     # This conditions allow the player to quit
     while nb_letters!='quit' or nb_letters!='quitter':
