@@ -1,5 +1,16 @@
 import discord
 import wordle
+# Import the client id of the bot
+from id import client_id
 
 client = discord.Client()
-client.run("OTQ5MDAzNzkyOTc0NzQxNTA0.YiECpw.T-RtSgYBjbT-QLjBzsDhmxHVpKQ")
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    client.run(client_id)
