@@ -296,5 +296,5 @@ def run():
     else:
         print(f"Félicitations ! Le mot était bien {secret_word} !")
 
-
-run()
+if __name__ == '__main__':
+    run()
