@@ -3,6 +3,8 @@ Just a little project to see if I can apply what I learn everyday in class.
 
 This is the wordle game (motus in french), in terminal. I plan to try to create the game with pygame soon. Feel free to use the code.
 
+The language here is Python, the Tcl used is for the executable.
+
 ## Setup and Run
 
 Requires **Python 3.7+**. You can download the latest version of Python [here](https://www.python.org/downloads/).
