@@ -42,7 +42,7 @@ execute it with the following command:
 
 
 ## Credits
-Created by Ribou ([Twitter](ribou.fr/twitter), [Twitch](ribou.fr/twitch))
+Created by Ribou ([Twitter](https://ribou.fr/twitter), [Twitch](https://ribou.fr/twitch))
 
 I got the data from [David Louapre](github.com/scienceetonnante) in his [WordleSutom project](github.com/scienceetonnante/WordleSutom), as I couldn't find any other list of words on the internet.
 
