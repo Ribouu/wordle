@@ -2,3 +2,4 @@ id.py
 .env
 __pycache__
 sources
+bot.py #still working on the beginning of it
